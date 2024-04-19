@@ -1,5 +1,5 @@
 # crypto-py
-A  pre-quantum cryptographic set of utilities written in Python
+A  pre-quantum cryptographic set of utilities written in Python.
 
 ## About
 This library exposes a set of cryptographic primitives and algorithms implementations that helps with 
@@ -11,7 +11,7 @@ The library exposes a CLI and methods that can be imported in other projects.
 
 In order to run this library you need (python3)[https://www.python.org/downloads/] installed on your machine.
 
-The library is implemented using version `3.11.2`
+The library is implemented using version `3.11.2`.
 
 ## How to run
 
