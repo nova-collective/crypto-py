@@ -2,8 +2,8 @@
 A  pre-quantum cryptographic set of utilities written in Python
 
 ## About
-This library exposes a set of cryptographic primitives and algorithms implementations that will help with 
-the setup of any cryptographic protocol. 
+This library exposes a set of cryptographic primitives and algorithms implementations that helps with 
+the setup of cryptographic protocols.
 
 The library exposes a CLI and methods that can be imported in other projects.
 
