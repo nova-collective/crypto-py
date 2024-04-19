@@ -21,6 +21,12 @@ The library is implemented using version `3.11.2`
 
    `pip install -r requirements.txt`
 
+## Test
+
+To run the complete unit test suite run the command:
+
+`pytest`
+
 
 ## License
 
