@@ -9,7 +9,7 @@ The library exposes a CLI and methods that can be imported in other projects.
 
 ## System requirements
 
-In order to run this library you need (python3)[https://www.python.org/downloads/] installed on your machine.
+In order to run this library you need [python3](https://www.python.org/downloads/) installed on your machine.
 
 The library is implemented using version `3.11.2`.
 
