@@ -1,5 +1,5 @@
 # crypto-py
-A crytographic set of utilities written in Python
+A cryptographic set of utilities written in Python
 
 ## About
 This library exposes a set of cryptographic primitives and algorithms implementations that will help with 
