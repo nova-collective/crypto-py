@@ -43,7 +43,8 @@ The following primitives are available:
 
 | primitive | parameters | description |
 |-----------|------------|-------------|
-| generate_key  |  key_length     | returns an hexadecimal string key of 128, 192, 256 bits length,<br> based on the parameter passed  |
+| generate_key | key_length | returns an hexadecimal string key of 128, 192, 256 bits length,<br> based on the parameter passed  |
+| AESGCM_encrypt | key: a 365-bit length key <br> secret: the secret to encrypt <br> unencrypted_data: optional, unencrypted data to associate to the chiper | returns the chiper with the associated data (if any) |
 
 
 ## Test
