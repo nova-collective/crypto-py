@@ -1,4 +1,7 @@
 # crypto-py
+
+[![Known Vulnerabilities](https://snyk.io/package/npm/snyk/badge.svg)](https://snyk.io/package/npm/snyk)
+
 A  pre-quantum cryptographic set of utilities written in Python.
 
 ## About
