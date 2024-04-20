@@ -35,9 +35,9 @@ The following primitives are available:
 
 | primitive | parameters | description |
 |-----------|------------|-------------|
-| sha3_224  |  input     | returns a sha-3 hash of 224 bits length |
-| sha3_256  |  input     | returns a sha-3 hash of 256 bits length |
-| sha3_512  |  input     | returns a sha-3 hash of 512 bits length |
+| sha3_224  |  input     | returns a SHA-3 hash of 224 bits length |
+| sha3_256  |  input     | returns a SHA-3 hash of 256 bits length |
+| sha3_512  |  input     | returns a SHA-3 hash of 512 bits length |
 
 ### Authenticated encryption family
 
