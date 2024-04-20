@@ -23,7 +23,9 @@ The library is implemented using version `3.11.2`.
 
 2. Invoke a method with the following command:
 
-   `pip Crypto.py <method_name> --param1=<value>`
+   `python3 Crypto.py <method_name> --param1=<value>`
+
+NOTE: on your system the `python3` binary name could be different.
 
 ## Primitives
 
@@ -33,15 +35,17 @@ The following primitives are available:
 
 | primitive | parameters | description |
 |-----------|------------|-------------|
-| sha3_224  |  input     | returns a sha-3 hash of 224 bits length |
-| sha3_256  |  input     | returns a sha-3 hash of 256 bits length |
-| sha3_512  |  input     | returns a sha-3 hash of 512 bits length |
+| sha3_224  |  input     | returns a SHA-3 hash of 224 bits length |
+| sha3_256  |  input     | returns a SHA-3 hash of 256 bits length |
+| sha3_512  |  input     | returns a SHA-3 hash of 512 bits length |
 
 ### Authenticated encryption family
 
 | primitive | parameters | description |
 |-----------|------------|-------------|
-| generate_key  |  key_length     | returns an hexadecimal string key of 128, 192, 256 bits length,<br> based on the parameter passed  |
+| generate_key | key_length | returns an hexadecimal string key of 128, 192, 256 bits length,<br> based on the parameter passed  |
+| AESGCM_encrypt | key: a 365-bit length key <br> secret: the secret to encrypt <br> unencrypted_data: optional, unencrypted data to associate to the chiper | returns the chiper with the associated data (if any) and the nonce used for the encryption |
+| AESGCM_decrypt | key: the same key used for the encryption <br> nonce: the nonce returned from the encryption operation <br>chiper: the secret to decrypt <br>unencrypted_data: optional, unencrypted data to associate to the chiper | returns the decrypted secret as string |
 
 
 ## Test
