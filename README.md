@@ -21,6 +21,29 @@ The library is implemented using version `3.11.2`.
 
    `pip install -r requirements.txt`
 
+2. Invoke a method with the following command:
+
+   `pip Crypto.py <method_name> --param1=<value>`
+
+## Primitives
+
+The following primitives are available:
+
+### SHA-3 family
+
+| primitive | parameters | description |
+|-----------|------------|-------------|
+| sha3_224  |  input     | returns a sha-3 hash of 224 bits length |
+| sha3_256  |  input     | returns a sha-3 hash of 256 bits length |
+| sha3_512  |  input     | returns a sha-3 hash of 512 bits length |
+
+### Authenticated encryption family
+
+| primitive | parameters | description |
+|-----------|------------|-------------|
+| generate_key  |  key_length     | returns an hexadecimal string key of 128, 192, 256 bits length,<br> based on the parameter passed  |
+
+
 ## Test
 
 To run the complete unit test suite run the command:
