@@ -1,6 +1,7 @@
 """Module providing authenticated encryption primitives unit tests."""
 
 import pytest
+import json
 from authenticated_encryption import (
     generate_key, AESGCM_encrypt,
     _bytes_to_hex_string,
@@ -12,7 +13,8 @@ from authenticated_encryption import (
 def test_generate_key_valid_lengths():
     for key_length in [128, 192, 256]:
         key = generate_key("", key_length)
-        assert len(key['key']) == key_length / 4 
+        lkey = json.loads(key)
+        assert len(lkey['key']) == key_length / 4 
 
 def test_generate_key_invalid_length():
     with pytest.raises(ValueError):
@@ -29,10 +31,12 @@ def test_AESGCM_encrypt():
     key = '941e058419564953ec4292aab10728b0f2c03eae5b89dc29abf77406ee051d29'
     secret = 'my_secret_data'
     encrypted_data = AESGCM_encrypt("", key, secret)
-    nonce = encrypted_data['nonce']
-    decrypted = AESGCM_decrypt("", key, encrypted_data['chiper'], nonce)
+    lencrypted_data = json.loads(encrypted_data)
+    nonce = lencrypted_data['nonce']
+    decrypted = AESGCM_decrypt("", key, lencrypted_data['chiper'], nonce)
+    ldecrypted = json.loads(decrypted)
     assert encrypted_data
-    assert decrypted['message'] == secret
+    assert ldecrypted['message'] == secret
 
 def test_bytes_to_hex_string():
     byte_key = b'\x00\x01\x02\x03\x04\x05'

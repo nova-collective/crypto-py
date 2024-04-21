@@ -1,6 +1,7 @@
 """Module providing authenticated encryption primitives."""
 
 import os
+import json
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 def generate_key(self, key_length):
@@ -17,8 +18,10 @@ def generate_key(self, key_length):
         raise ValueError("The key length must be 128, 192 or 256 bit")
 
     key = AESGCM.generate_key(bit_length=key_length)
+    
+    json_data = json.dumps({ 'key': _bytes_to_hex_string(key) })
 
-    return { 'key': _bytes_to_hex_string(key) }
+    return json_data
 
 def AESGCM_encrypt(self, key, secret, unencrypted_data = None):
     '''
@@ -42,7 +45,13 @@ def AESGCM_encrypt(self, key, secret, unencrypted_data = None):
     aesgcm = AESGCM(bkey)
     nonce = os.urandom(12)
     bencrypted = aesgcm.encrypt(nonce, bsecret, bud)
-    return { 'chiper': _bytes_to_hex_string(bencrypted), 'nonce': _bytes_to_hex_string(nonce) }
+
+    hchiper = _bytes_to_hex_string(bencrypted)
+    hnonce = _bytes_to_hex_string(nonce)
+    
+    json_data = json.dumps({ 'chiper': hchiper, 'nonce': hnonce })
+    
+    return json_data
 
 def AESGCM_decrypt(self, key, chiper, nonce, unencrypted_data=None):
     '''
@@ -65,8 +74,11 @@ def AESGCM_decrypt(self, key, chiper, nonce, unencrypted_data=None):
     bct = _hex_string_to_bytes(chiper)
     bnonce = _hex_string_to_bytes(nonce)
     aad = _to_bytes_like(unencrypted_data) if unencrypted_data else None
+    
+    hmessage = aesgcm.decrypt(bnonce, bct, aad).decode('utf-8')
+    json_data = json.dumps({ 'message': hmessage })
 
-    return { 'message': aesgcm.decrypt(bnonce, bct, aad).decode('utf-8') }
+    return json_data
 
 
 def _bytes_to_hex_string(byte_string):

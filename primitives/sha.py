@@ -1,5 +1,6 @@
 """Module providing sha-3 primitives."""
 
+import json
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 
@@ -19,8 +20,10 @@ def sha3_224(self, input):
     digest.update(input_bytes)
     hashed_value = digest.finalize()
     hashed_hex = hashed_value.hex()
+    
+    json_data = json.dumps({ 'sha': hashed_hex })
 
-    return hashed_hex
+    return json_data
 
 def sha3_256(self, input):
     '''
@@ -38,8 +41,10 @@ def sha3_256(self, input):
     digest.update(input_bytes)
     hashed_value = digest.finalize()
     hashed_hex = hashed_value.hex()
+    
+    json_data = json.dumps({ 'sha': hashed_hex })
 
-    return hashed_hex
+    return json_data
 
 def sha3_512(self, input):
     '''
@@ -57,5 +62,7 @@ def sha3_512(self, input):
     digest.update(input_bytes)
     hashed_value = digest.finalize()
     hashed_hex = hashed_value.hex()
+    
+    json_data = json.dumps({ 'sha': hashed_hex })
 
-    return hashed_hex
+    return json_data

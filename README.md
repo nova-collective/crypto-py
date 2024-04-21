@@ -42,6 +42,8 @@ The following primitives are available:
 | sha3_256  |  input     | returns a SHA-3 hash of 256 bits length |
 | sha3_512  |  input     | returns a SHA-3 hash of 512 bits length |
 
+All the functions return the data as JSON.
+
 ### Authenticated encryption family
 
 | primitive | parameters | description |
@@ -49,6 +51,8 @@ The following primitives are available:
 | generate_key | key_length | returns an hexadecimal string key of 128, 192, 256 bits length,<br> based on the parameter passed  |
 | AESGCM_encrypt | key: a 365-bit length key <br> secret: the secret to encrypt <br> unencrypted_data: optional, unencrypted data to associate to the chiper | returns the chiper with the associated data (if any) and the nonce used for the encryption |
 | AESGCM_decrypt | key: the same key used for the encryption <br> nonce: the nonce returned from the encryption operation <br>chiper: the secret to decrypt <br>unencrypted_data: optional, unencrypted data to associate to the chiper | returns the decrypted secret as string |
+
+All the functions return the data as JSON.
 
 
 ## Test
