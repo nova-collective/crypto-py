@@ -1,3 +1,4 @@
 fire
 cryptography
 pytest
+pytest-cov

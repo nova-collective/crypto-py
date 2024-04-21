@@ -1,4 +1,7 @@
 # crypto-py
+
+[![Known Vulnerabilities](https://snyk.io/package/npm/snyk/badge.svg)](https://snyk.io/package/npm/snyk) [![codecov](https://codecov.io/gh/nova-collective/crypto-py/graph/badge.svg?token=6G9KPAO2G9)](https://codecov.io/gh/nova-collective/crypto-py) ![main workflow](https://github.com/nova-collective/crypto-py/actions/workflows/main.yml/badge.svg) [![HitCount](https://hits.dwyl.com/nova-collective/crypto-py.svg)](https://hits.dwyl.com/nova-collective/crypto-py)
+
 A  pre-quantum cryptographic set of utilities written in Python.
 
 ## About
