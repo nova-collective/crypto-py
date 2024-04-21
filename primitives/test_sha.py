@@ -1,3 +1,5 @@
+"""Module providing sha primitives unit tests."""
+
 import pytest
 from sha import sha3_224, sha3_256, sha3_512
 

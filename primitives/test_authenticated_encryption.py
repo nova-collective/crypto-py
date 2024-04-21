@@ -1,3 +1,5 @@
+"""Module providing authenticated encryption primitives unit tests."""
+
 import pytest
 from authenticated_encryption import (
     generate_key, AESGCM_encrypt,
