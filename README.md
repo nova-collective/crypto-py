@@ -38,9 +38,9 @@ The following primitives are available:
 
 | primitive | parameters | description | output |
 |-----------|------------|-------------|--------|
-| sha3_224  |  input     | returns a SHA-3 hash of 224 bits length | `{ "sha": <hexadecimal_string> }` |
-| sha3_256  |  input     | returns a SHA-3 hash of 256 bits length | `{ "sha": <hexadecimal_string> }` |
-| sha3_512  |  input     | returns a SHA-3 hash of 512 bits length | `{ "sha": <hexadecimal_string> }` |
+| sha3_224  |  input     | returns a SHA-3 hash of 224 bits length | `{ "hash": <hexadecimal_string> }` |
+| sha3_256  |  input     | returns a SHA-3 hash of 256 bits length | `{ "hash": <hexadecimal_string> }` |
+| sha3_512  |  input     | returns a SHA-3 hash of 512 bits length | `{ "hash": <hexadecimal_string> }` |
 
 All the functions return the data as JSON.
 

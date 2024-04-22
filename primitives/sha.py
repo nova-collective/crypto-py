@@ -21,7 +21,7 @@ def sha3_224(self, input):
     hashed_value = digest.finalize()
     hashed_hex = hashed_value.hex()
     
-    json_data = json.dumps({ 'sha': hashed_hex })
+    json_data = json.dumps({ 'hash': hashed_hex })
 
     return json_data
 
@@ -42,7 +42,7 @@ def sha3_256(self, input):
     hashed_value = digest.finalize()
     hashed_hex = hashed_value.hex()
     
-    json_data = json.dumps({ 'sha': hashed_hex })
+    json_data = json.dumps({ 'hash': hashed_hex })
 
     return json_data
 
@@ -63,6 +63,6 @@ def sha3_512(self, input):
     hashed_value = digest.finalize()
     hashed_hex = hashed_value.hex()
     
-    json_data = json.dumps({ 'sha': hashed_hex })
+    json_data = json.dumps({ 'hash': hashed_hex })
 
     return json_data
