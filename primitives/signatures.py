@@ -72,7 +72,7 @@ def verify(self, public_key, signature, message):
         message (string): the message signed to verify
 
         Returns:
-        json: the signed message  
+        json: the result of the verification: success or failure 
     '''
     if public_key is None:
         raise ValueError("Public key has not been furnished.")
