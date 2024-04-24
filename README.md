@@ -61,7 +61,7 @@ The following digital signatures utilities implements the [Elliptic Curve Signat
 | primitive | parameters | description | output |
 |-----------|------------|-------------|--------|
 | generates_key_pair | none | generates a private and public keys pair | `{ "privateKey": <hexadecimal_string>, "publicKey": <hexadecimal_string> }` |
-| sign | `private_key`: hexadecimal string <br> `message`: string | signs a message with the private key and produce the signature for the message | `{ 'signature': <hexadecimal_string> }` |
+| sign | `private_key`: hexadecimal string <br> `message`: string | signs a message with the private key and produce the signature for the message | `{ "signature": <hexadecimal_string> }` |
 | verify | `public_key`: hexadecimal_string <br> `signature`: hexadecimal_string <br> `message`: hexadecimal_string | verifies a signature on a particular message | `{ "result": <"success"\|"failure"> }` |
 
 All the functions return the data as JSON.
