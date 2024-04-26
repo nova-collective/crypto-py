@@ -50,7 +50,7 @@ All the functions return the data as JSON.
 |-----------|------------|-------------|--------|
 | generate_key | `key_length`: number | returns an hexadecimal string key of 128, 192, 256 bits length,<br> based on the parameter passed  |  `{ "key": <hexadecimal_string> }` |
 | AESGCM_encrypt | `key`: a 365-bit length key <br> `secret`: the secret to encrypt <br> `unencrypted_data`: optional, unencrypted data to associate to the chiper | returns the chiper with the associated data (if any) and the nonce used for the encryption | `{ "chiper": <hexadecimal_string>, "nonce": <hexadecimal_string> }` |
-| AESGCM_decrypt | `key`: the same key used for the encryption <br> `nonce`: the nonce returned from the encryption operation <br>`chiper`: the secret to decrypt <br>`unencrypted_data`: optional, unencrypted data to associate to the chiper | returns the decrypted secret as string | `{ "chiper": <hexadecimal_string>, "nonce": <hexadecimal_string> }` |
+| AESGCM_decrypt | `key`: the same key used for the encryption <br> `nonce`: the nonce returned from the encryption operation <br>`chiper`: the secret to decrypt <br>`unencrypted_data`: optional, unencrypted data to associate to the chiper | returns the decrypted secret as string | `{ "message": <string> }` |
 
 All the functions return the data as JSON.
 
