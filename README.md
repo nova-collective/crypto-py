@@ -26,7 +26,7 @@ The library is implemented using version `3.11.2`.
 
 2. Invoke a method with the following command:
 
-   `python3 Crypto.py <method_name> --param1=<value>`
+   `python3 -m crypto <method_name> --param1 <value>`
 
 NOTE: on your system the `python3` binary name could be different.
 
