@@ -2,7 +2,7 @@
 
 import pytest
 import json
-from authenticated_encryption import (
+from crypto.authenticated_encryption import (
     generate_key, AESGCM_encrypt,
     _bytes_to_hex_string,
     AESGCM_decrypt,

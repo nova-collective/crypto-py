@@ -1,3 +1,5 @@
+"""Module providing homomorphic encryption primitives."""
+
 from lightphe import LightPHE
 
 algorithms = [
@@ -14,13 +16,13 @@ algorithms = [
 ]
 
 def _initPhe():
-    phe = LightPHE(algorithm_name = algorithms[3], key_file="keys.json")
+    phe = LightPHE(algorithm_name = algorithms[3], key_file="he_keys.json")
     return phe
     
 
-def he_keys(self):
+def he_generate_keys(self):
     phe = LightPHE(algorithm_name = algorithms[3])
-    phe.export_keys("keys.json")
+    phe.export_keys("he_keys.json")
     return
 
 def he_encrypt (self, m):

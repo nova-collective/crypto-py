@@ -1,11 +1,11 @@
+"""Module providing digital signatures primitives unit tests."""
+
 import json
-import pytest
-from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import (
     Ed25519PrivateKey
 )
-from signatures import generates_key_pair, sign, verify
+from crypto.signatures import generates_key_pair, sign, verify
 
 def test_generates_key_pair():
     keys = generates_key_pair("")
