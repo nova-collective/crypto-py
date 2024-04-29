@@ -2,3 +2,4 @@ fire
 cryptography
 pytest
 pytest-cov
+lightphe
