@@ -32,13 +32,13 @@ def _get_algorithm(dictionary, key):
     else:
         return dictionary[key]
 
-def _init_phe(algorithm="paillier"):
+def _init_phe(algorithm="paillier", key_file="he_keys.json"):
     alg = _get_algorithm(algorithms, algorithm)
-    phe = LightPHE(algorithm_name = algorithms[alg], key_file="he_keys.json")
+    phe = LightPHE(algorithm_name = alg, key_file=key_file)
     return phe
 
 
-def he_generate_keys(self, algorithm="paillier"):
+def he_generate_keys(self, algorithm="paillier", key_file="he_keys.json"):
     """_summary_
     This function generates a private-public key pair.
     
@@ -47,7 +47,7 @@ def he_generate_keys(self, algorithm="paillier"):
     """
     alg = _get_algorithm(algorithms, algorithm)
     phe = LightPHE(alg)
-    phe.export_keys(target_file = "he_keys.json")
+    phe.export_keys(target_file = key_file)
     return
 
 def he_encrypt(self, m, algorithm="paillier"):
@@ -63,10 +63,9 @@ def he_encrypt(self, m, algorithm="paillier"):
     Returns:
         _type_: _description_
     """
-    alg = _get_algorithm(algorithms, algorithm)
-    phe = _init_phe(alg)
+    phe = _init_phe(algorithm)
     e = phe.encrypt(m)
-    return e
+    return e.value
 
 def he_sum(self, m, n, algorithm="paillier"):
     """_summary_
@@ -82,10 +81,9 @@ def he_sum(self, m, n, algorithm="paillier"):
     Returns:
         _type_: _description_
     """
-    alg = _get_algorithm(algorithms, algorithm)
-    phe = _init_phe(alg)
+    phe = _init_phe(algorithm)
     s =  phe.create_ciphertext_obj(m) + phe.create_ciphertext_obj(n)
-    return s
+    return s.value
 
 def he_decrypt(self, c, algorithm="paillier"):
     """_summary_
@@ -100,8 +98,7 @@ def he_decrypt(self, c, algorithm="paillier"):
     Returns:
         _type_: _description_
     """
-    alg = _get_algorithm(algorithms, algorithm)
-    phe = _init_phe(alg)
+    phe = _init_phe(algorithm)
     chiper = phe.create_ciphertext_obj(c)
     d = phe.decrypt(chiper)
     return d
