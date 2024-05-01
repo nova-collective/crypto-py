@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: upgrade pip
-      uses: pip install --upgrade pip
+      run: pip install --upgrade pip
 
     - name: Install dependencies
       run: pip install -r requirements.txt
