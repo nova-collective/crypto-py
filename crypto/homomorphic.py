@@ -64,7 +64,7 @@ def he_generate_keys(self, algorithm="paillier", key_file="he_keys.json"):
     json_data = json.dumps({ "result": f"generated keys file {key_file}" })
     return json_data
 
-def he_encrypt(self, m, algorithm="paillier"):
+def he_encrypt(self, m, algorithm="paillier", key_file="he_keys.json"):
     """_summary_
     This function encrypt a value based on the algorithm specified.
     The algorithm passed to this function must be the same of that one used 
@@ -77,13 +77,13 @@ def he_encrypt(self, m, algorithm="paillier"):
     Returns:
         _type_: _description_
     """
-    phe = _init_phe(algorithm)
+    phe = _init_phe(algorithm, key_file)
     e = phe.encrypt(m)
 
     json_data = json.dumps({ "result": e.value })
     return json_data
 
-def he_sum(self, m, n, algorithm="paillier"):
+def he_sum(self, m, n, algorithm="paillier", key_file="he_keys.json"):
     """_summary_
     This function sum two encrypted values, returning the sum still encrypted.
     The algorithm passed to this function must be the same of that one used 
@@ -97,13 +97,13 @@ def he_sum(self, m, n, algorithm="paillier"):
     Returns:
         _type_: _description_
     """
-    phe = _init_phe(algorithm)
+    phe = _init_phe(algorithm, key_file)
     s =  phe.create_ciphertext_obj(m) + phe.create_ciphertext_obj(n)
 
     json_data = json.dumps({ "result": s.value })
     return json_data
 
-def he_decrypt(self, c, algorithm="paillier"):
+def he_decrypt(self, c, algorithm="paillier", key_file="he_keys.json"):
     """_summary_
     This function decrypt a value based on the algorithm specified.
     The algorithm passed to this function must be the same of that one used 
@@ -116,7 +116,7 @@ def he_decrypt(self, c, algorithm="paillier"):
     Returns:
         _type_: _description_
     """
-    phe = _init_phe(algorithm)
+    phe = _init_phe(algorithm, key_file)
     chiper = phe.create_ciphertext_obj(c)
     d = phe.decrypt(chiper)
     

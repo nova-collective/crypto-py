@@ -88,9 +88,9 @@ further details.
 | primitive | parameters | description | output |
 |-----------|------------|-------------|--------|
 | he_generate_keys  |  `algorithm`: string <br>  `key_file`: string   | generates a file of public/private keys | `{ "result": <string> }` |
-| he_encrypt  |  `m`: number  <br>  `algorithm`: string | encrypt a numeric value | `{ "result": <int|list|tuple> }` |
-| he_sum  |  `m`: int\|list\|tuple  <br> `n`: int\|list\|tuple <br>  `algorithm`: string     | returns the sum of the encrypted values | `{ "result": <int\|list\|tuple> }` |
-| he_decrypt  |   `c`: int\|list\|tuple  <br>  `algorithm`: string     | returns the value decrypted | `{ "result": <number> }` |
+| he_encrypt  |  `m`: number  <br>  `algorithm`: string | encrypt a numeric value <br> `key_file`: string | `{ "result": <int|list|tuple> }` |
+| he_sum  |  `m`: int\|list\|tuple  <br> `n`: int\|list\|tuple <br>  `algorithm`: string  <br> `key_file`: string | returns the sum of the encrypted values | `{ "result": <int\|list\|tuple> }` |
+| he_decrypt  |   `c`: int\|list\|tuple  <br>  `algorithm`: string <br> `key_file`: string | returns the value decrypted | `{ "result": <number> }` |
 
 All the functions return the data as JSON.
 
