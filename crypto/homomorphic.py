@@ -15,50 +15,93 @@ algorithms = {
     "elliptic_curve_el_gamal": "EllipticCurve-ElGamal"
 }
 
-allowed_algorithms = ""
+ALLOWED_ALGORITHMS = ""
 
-is_first = True
+IS_FIRST = True
 for al in algorithms:
-    if is_first:
-        allowed_algorithms = f" {al}"
-        is_first = False
+    if IS_FIRST:
+        ALLOWED_ALGORITHMS = f" {al}"
+        IS_FIRST = False
     else:
-        allowed_algorithms = f"{allowed_algorithms}, {al}"
+        ALLOWED_ALGORITHMS = f"{ALLOWED_ALGORITHMS}, {al}"
 
 def _get_algorithm(dictionary, key):
     if key not in dictionary:
-        msg = f"The algorithm '{key}' does not exists. Allowed Algorithms are:{allowed_algorithms}"
+        msg = f"The algorithm '{key}' does not exists. Allowed Algorithms are:{ALLOWED_ALGORITHMS}."
         raise KeyError(msg)
     else:
         return dictionary[key]
 
-def _initPhe(algorithm="paillier"):
+def _init_phe(algorithm="paillier"):
     alg = _get_algorithm(algorithms, algorithm)
     phe = LightPHE(algorithm_name = algorithms[alg], key_file="he_keys.json")
     return phe
 
 
 def he_generate_keys(self, algorithm="paillier"):
+    """_summary_
+    This function generates a private-public key pair.
+    
+    Args:
+        algorithm (str, optional): _description_. Defaults to "paillier".
+    """
     alg = _get_algorithm(algorithms, algorithm)
     phe = LightPHE(alg)
     phe.export_keys(target_file = "he_keys.json")
     return
 
 def he_encrypt(self, m, algorithm="paillier"):
+    """_summary_
+    This function encrypt a value based on the algorithm specified.
+    The algorithm passed to this function must be the same of that one used 
+    for the keys generation.
+
+    Args:
+        m (_type_): _description_
+        algorithm (str, optional): _description_. Defaults to "paillier".
+
+    Returns:
+        _type_: _description_
+    """
     alg = _get_algorithm(algorithms, algorithm)
-    phe = _initPhe(alg)
+    phe = _init_phe(alg)
     e = phe.encrypt(m)
     return e
 
 def he_sum(self, m, n, algorithm="paillier"):
+    """_summary_
+    This function sum two encrypted values, returning the sum still encrypted.
+    The algorithm passed to this function must be the same of that one used 
+    for the keys generation.
+
+    Args:
+        m (_type_): _description_
+        n (_type_): _description_
+        algorithm (str, optional): _description_. Defaults to "paillier".
+
+    Returns:
+        _type_: _description_
+    """
     alg = _get_algorithm(algorithms, algorithm)
-    phe = _initPhe(alg)
+    phe = _init_phe(alg)
     s =  phe.create_ciphertext_obj(m) + phe.create_ciphertext_obj(n)
     return s
 
 def he_decrypt(self, c, algorithm="paillier"):
+    """_summary_
+    This function decrypt a value based on the algorithm specified.
+    The algorithm passed to this function must be the same of that one used 
+    for the keys generation.
+    
+    Args:
+        c (_type_): _description_
+        algorithm (str, optional): _description_. Defaults to "paillier".
+
+    Returns:
+        _type_: _description_
+    """
     alg = _get_algorithm(algorithms, algorithm)
-    phe = _initPhe(alg)
+    phe = _init_phe(alg)
     chiper = phe.create_ciphertext_obj(c)
     d = phe.decrypt(chiper)
     return d
