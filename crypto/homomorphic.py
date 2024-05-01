@@ -1,4 +1,15 @@
-"""Module providing homomorphic encryption primitives."""
+"""
+Module providing homomorphic encryption primitives.
+
+@misc{serengil2023lightphe,
+  abstract     = {A Lightweight Partially Homomorphic Encryption Library for Python},
+  author       = {Serengil, Sefik Ilkin},
+  title        = {LightPHE},
+  howpublished = {https://github.com/serengil/LightPHE},
+  year         = {2023}
+}
+"""
+
 
 from lightphe import LightPHE
 import json

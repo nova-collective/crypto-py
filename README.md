@@ -66,6 +66,33 @@ The following digital signatures utilities implements the [Elliptic Curve Signat
 
 All the functions return the data as JSON.
 
+### Homomorphic encryption family
+
+In order to use the homomorphic functions, for the first run the function for the keys generation, specifying an algorithm schema. The following schemas are supported:
+
+```
+"rsa": "RSA",
+"el_gamal",
+"exponential_el_gamal",
+"paillier",
+"damgard_jurik",
+"okamoto_uchiyama",
+"benaloh",
+"naccache_stern",
+"goldwasser_micali",
+"elliptic_curve_el_gamal"
+```
+if no schema is passed, the default schema applied is `paillier`. Not all the schemas supports all the operations, please refer to [this documentation](https://github.com/serengil/LightPHE) for
+further details.
+
+| primitive | parameters | description | output |
+|-----------|------------|-------------|--------|
+| he_generate_keys  |  `algorithm`: string <br>  `key_file`: string   | generates a file of public/private keys | `{ "result": <string> }` |
+| he_encrypt  |  `m`: number  <br>  `algorithm`: string | encrypt a numeric value | `{ "result": <int|list|tuple> }` |
+| he_sum  |  `m`: int\|list\|tuple  <br> `n`: int\|list\|tuple <br>  `algorithm`: string     | returns the sum of the encrypted values | `{ "result": <int\|list\|tuple> }` |
+| he_decrypt  |   `c`: int\|list\|tuple  <br>  `algorithm`: string     | returns the value decrypted | `{ "result": <number> }` |
+
+All the functions return the data as JSON.
 
 ## Test
 
