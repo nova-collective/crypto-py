@@ -15,9 +15,20 @@ algorithms = {
     "elliptic_curve_el_gamal": "EllipticCurve-ElGamal"
 }
 
+allowed_algorithms = ""
+
+is_first = True
+for al in algorithms:
+    if is_first:
+        allowed_algorithms = f" {al}"
+        is_first = False
+    else:
+        allowed_algorithms = f"{allowed_algorithms}, {al}"
+
 def _get_algorithm(dictionary, key):
     if key not in dictionary:
-        raise KeyError(f"The algorithm '{key}' does not exists.")
+        msg = f"The algorithm '{key}' does not exists. Allowed Algorithms are:{allowed_algorithms}"
+        raise KeyError(msg)
     else:
         return dictionary[key]
 
