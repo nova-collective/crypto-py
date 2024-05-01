@@ -1,6 +1,7 @@
 """Module providing homomorphic encryption primitives."""
 
 from lightphe import LightPHE
+import json
 
 algorithms = {
     "rsa": "RSA",
@@ -48,7 +49,9 @@ def he_generate_keys(self, algorithm="paillier", key_file="he_keys.json"):
     alg = _get_algorithm(algorithms, algorithm)
     phe = LightPHE(alg)
     phe.export_keys(target_file = key_file)
-    return
+    
+    json_data = json.dumps({ "result": f"generated keys file {key_file}" })
+    return json_data
 
 def he_encrypt(self, m, algorithm="paillier"):
     """_summary_
@@ -65,7 +68,9 @@ def he_encrypt(self, m, algorithm="paillier"):
     """
     phe = _init_phe(algorithm)
     e = phe.encrypt(m)
-    return e.value
+
+    json_data = json.dumps({ "result": e.value })
+    return json_data
 
 def he_sum(self, m, n, algorithm="paillier"):
     """_summary_
@@ -83,7 +88,9 @@ def he_sum(self, m, n, algorithm="paillier"):
     """
     phe = _init_phe(algorithm)
     s =  phe.create_ciphertext_obj(m) + phe.create_ciphertext_obj(n)
-    return s.value
+
+    json_data = json.dumps({ "result": s.value })
+    return json_data
 
 def he_decrypt(self, c, algorithm="paillier"):
     """_summary_
@@ -101,4 +108,6 @@ def he_decrypt(self, c, algorithm="paillier"):
     phe = _init_phe(algorithm)
     chiper = phe.create_ciphertext_obj(c)
     d = phe.decrypt(chiper)
-    return d
+    
+    json_data = json.dumps({ "result": d })
+    return json_data

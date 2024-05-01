@@ -1,7 +1,7 @@
 """Module providing sha primitives unit tests."""
 
-import pytest
 import json
+import pytest
 from crypto.sha import sha3_224, sha3_256, sha3_512
 
 class TestCryptoMethods:

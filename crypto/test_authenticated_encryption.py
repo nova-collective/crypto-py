@@ -1,7 +1,7 @@
 """Module providing authenticated encryption primitives unit tests."""
 
-import pytest
 import json
+import pytest
 from crypto.authenticated_encryption import (
     generate_key, AESGCM_encrypt,
     _bytes_to_hex_string,

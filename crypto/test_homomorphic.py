@@ -1,5 +1,6 @@
 """Module providing homomorphic primitives unit tests."""
 
+import json
 import os
 import pytest
 from crypto.homomorphic import (
@@ -44,8 +45,11 @@ def test_he_encrypt_decrypt():
     m = 42
     phe = _init_phe("paillier", KEYS_TEST_FILE)
     encrypted = he_encrypt("", m, "paillier")
-    decrypted = he_decrypt("", encrypted, "paillier")
-    assert decrypted == m
+    j_encrypted = json.loads(encrypted)
+    
+    decrypted = he_decrypt("", j_encrypted["result"], "paillier")
+    j_decrypted = json.loads(decrypted)
+    assert j_decrypted["result"] == m
 
 def test_he_sum():
     m = 42
@@ -53,9 +57,15 @@ def test_he_sum():
     phe = _init_phe("paillier", KEYS_TEST_FILE)
     encrypted_m = he_encrypt("", m, "paillier")
     encrypted_n = he_encrypt("", n, "paillier")
-    encrypted_sum = he_sum("", encrypted_m, encrypted_n, "paillier")
-    decrypted_sum = he_decrypt("", encrypted_sum, "paillier")
-    assert decrypted_sum == m + n
+    j_encrypted_m = json.loads(encrypted_m)
+    j_encrypted_n = json.loads(encrypted_n)
+    
+    encrypted_sum = he_sum("", j_encrypted_m["result"], j_encrypted_n["result"], "paillier")
+    j_encrypted_sum = json.loads(encrypted_sum)
+    
+    decrypted_sum = he_decrypt("", j_encrypted_sum["result"], "paillier")
+    j_decripted_sum = json.loads(decrypted_sum)
+    assert j_decripted_sum["result"] == m + n
 
 def test_multiple_sum():
     m = 10
@@ -65,10 +75,19 @@ def test_multiple_sum():
     encrypted_m = he_encrypt("", m, "paillier")
     encrypted_n = he_encrypt("", n, "paillier")
     encrypted_o = he_encrypt("", o, "paillier")
-    encrypted_sum = he_sum("", encrypted_m, encrypted_n, "paillier")
-    encrypted_another_sum = he_sum("", encrypted_sum, encrypted_o, "paillier")
-    decrypted_sum = he_decrypt("", encrypted_another_sum, "paillier")
-    assert decrypted_sum == 60
+    j_encrypted_m = json.loads(encrypted_m)
+    j_encrypted_n = json.loads(encrypted_n)
+    j_encrypted_o = json.loads(encrypted_o)
+    
+    encrypted_sum = he_sum("", j_encrypted_m["result"], j_encrypted_n["result"], "paillier")
+    j_encrypted_sum = json.loads(encrypted_sum)
+    
+    encrypted_another_sum = he_sum("", j_encrypted_sum["result"], j_encrypted_o["result"], "paillier")
+    j_encrypted_another_sum = json.loads(encrypted_another_sum)
+    
+    decrypted_sum = he_decrypt("", j_encrypted_another_sum["result"], "paillier")
+    j_decripted_sum = json.loads(decrypted_sum)
+    assert j_decripted_sum["result"] == 60
     
     
 
