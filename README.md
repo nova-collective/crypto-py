@@ -71,7 +71,7 @@ All the functions return the data as JSON.
 In order to use the homomorphic functions, for the first run the function for the keys generation, specifying an algorithm schema. The following schemas are supported:
 
 ```
-"rsa": "RSA",
+"rsa",
 "el_gamal",
 "exponential_el_gamal",
 "paillier",
